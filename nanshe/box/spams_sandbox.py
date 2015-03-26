@@ -103,7 +103,7 @@ def call_multiprocessing_queue_spams_trainDL(*args, **kwargs):
     )
     p.start()
     result = out_queue.get()
-    result = result.copy()
+    result = result.copy(order='A')
     p.join()
 
     if p.exitcode != 0: raise SPAMSException(
@@ -387,6 +387,6 @@ def call_spams_trainDL(*args, **kwargs):
     import spams
 
     result = spams.trainDL(*args, **kwargs)
-    result = result.copy()
+    result = result.copy(order='A')
 
     return(result)
