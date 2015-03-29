@@ -218,7 +218,7 @@ class TestNansheLearner(object):
 
         self.config_blocks = {
             "generate_neurons_blocks" : {
-                "num_processes" : 4,
+                "num_processes" : 1,
                 "block_shape" : [10000, -1, -1],
                 "num_blocks" : [-1, 5, 5],
                 "half_border_shape" : [0, 5, 5],
@@ -352,7 +352,7 @@ class TestNansheLearner(object):
 
         self.config_blocks_3D = {
             "generate_neurons_blocks" : {
-                "num_processes" : 4,
+                "num_processes" : 1,
                 "block_shape" : [10000, -1, -1, -1],
                 "num_blocks" : [-1, 2, 2, 2],
                 "half_border_shape" : [0, 5, 5, 5],
@@ -452,7 +452,7 @@ class TestNansheLearner(object):
 
         self.config_blocks_drmaa = {
             "generate_neurons_blocks" : {
-                "num_processes" : 4,
+                "num_processes" : 1,
                 "block_shape" : [10000, -1, -1],
                 "num_blocks" : [-1, 5, 5],
                 "half_border_shape" : [0, 5, 5],
@@ -589,7 +589,7 @@ class TestNansheLearner(object):
 
         self.config_blocks_3D_drmaa = {
             "generate_neurons_blocks" : {
-                "num_processes" : 4,
+                "num_processes" : 1,
                 "block_shape" : [10000, -1, -1, -1],
                 "num_blocks" : [-1, 2, 2, 2],
                 "half_border_shape" : [0, 5, 5, 5],
