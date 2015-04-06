@@ -206,12 +206,13 @@ del get_versions
 
 
 __all__ = [
-    "box", "converter", "io", "imp", "learner", "registerer", "syn", "util",
-    # "viewer"
+    "box", "converter", "flow", "io", "imp", "learner", "registerer", "syn",
+    "util",  # "viewer"
 ]
 
 import box
 import converter
+import flow
 import io
 import imp
 import learner
