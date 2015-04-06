@@ -17,6 +17,9 @@ from nanshe.imp import segment as seg
 from nanshe.io.xjson import read_parameters
 
 
+params = {}
+
+
 @ruffus.transform(
     ["*.raw.h5", "*.json"],
     ruffus.suffix(".raw.h5"),
