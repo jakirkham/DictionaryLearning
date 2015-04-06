@@ -95,7 +95,7 @@ def postprocess_data(input_data_filename, output_data_filename):
 
 
 if __name__ == "__main__":
-    parser = ruffus.cmdline.get_argparse()
+    parser = ruffus.cmdline.get_argparse(ignored_args=["config"])
     parser.add_argument(
         "-c", "--config", help="JSON config file", required=True
     )
