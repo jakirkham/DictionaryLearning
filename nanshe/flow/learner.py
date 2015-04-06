@@ -17,14 +17,15 @@ from nanshe.imp import segment as seg
 from nanshe.io.xjson import read_parameters
 
 
+config_filename = "nanshe_learner.json"
+params = read_parameters(config_filename)
+
 @ruffus.transform(
     ["*.raw.h5", "*.json"],
     ruffus.suffix(".raw.h5"),
     ".pre.h5"
 )
-def preprocess_data(input_filenames, output_data_filename):
-    input_data_filename, config_filename = input_filenames
-
+def preprocess_data(input_data_filename, output_data_filename):
     params = read_parameters(config_filename)
     params = params["generate_neurons"]["preprocess_data"]
 
@@ -48,9 +49,7 @@ def preprocess_data(input_filenames, output_data_filename):
     ruffus.suffix(".pre.h5"),
     ".dict.h5"
 )
-def generate_dictionary(input_filenames, output_data_filename):
-    input_data_filename, config_filename = input_filenames
-
+def generate_dictionary(input_data_filename, output_data_filename):
     params = read_parameters(config_filename)
     params = params["generate_neurons"]["generate_dictionary"]
 
@@ -75,9 +74,7 @@ def generate_dictionary(input_filenames, output_data_filename):
     ruffus.suffix(".dict.h5"),
     ".post.h5"
 )
-def postprocess_data(input_filenames, output_data_filename):
-    input_data_filename, config_filename = input_filenames
-
+def postprocess_data(input_data_filename, output_data_filename):
     params = read_parameters(config_filename)
     params = params["generate_neurons"]["postprocess_data"]
 
