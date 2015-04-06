@@ -92,3 +92,9 @@ def postprocess_data(input_data_filename, output_data_filename):
             chunks=True
         )
         output_data_file["images"][...] = output_data
+
+
+if __name__ == "__main__":
+    parser = ruffus.cmdline.get_argparse()
+    options = parser.parse_args()
+    ruffus.cmdline.run(options)
