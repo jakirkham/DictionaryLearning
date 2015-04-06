@@ -17,9 +17,6 @@ from nanshe.imp import segment as seg
 from nanshe.io.xjson import read_parameters
 
 
-config_filename = "nanshe_learner.json"
-params = read_parameters(config_filename)
-
 @ruffus.transform(
     ["*.raw.h5", "*.json"],
     ruffus.suffix(".raw.h5"),
@@ -96,5 +93,12 @@ def postprocess_data(input_data_filename, output_data_filename):
 
 if __name__ == "__main__":
     parser = ruffus.cmdline.get_argparse()
+    parser.add_argument(
+        "-c", "--config", help="JSON config file", required=True
+    )
+
     options = parser.parse_args()
+    config_filename = options.config
+    params = read_parameters(config_filename)
+
     ruffus.cmdline.run(options)
