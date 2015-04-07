@@ -26,14 +26,15 @@ params = {}
     ".pre.h5"
 )
 def preprocess_data(input_data_filename, output_data_filename):
-    params = read_parameters(config_filename)
-    params = params["generate_neurons"]["preprocess_data"]
+    global params
 
     input_data = None
     with h5py.File(input_data_filename, "r") as input_data_file:
         input_data = input_data_file["images"][...]
 
-    output_data = seg.preprocess_data(input_data, **params)
+    output_data = seg.preprocess_data(
+        input_data, **params["generate_neurons"]["preprocess_data"]
+    )
 
     with h5py.File(output_data_filename, "w") as output_data_file:
         output_data_file.create_dataset(
@@ -50,14 +51,15 @@ def preprocess_data(input_data_filename, output_data_filename):
     ".dict.h5"
 )
 def generate_dictionary(input_data_filename, output_data_filename):
-    params = read_parameters(config_filename)
-    params = params["generate_neurons"]["generate_dictionary"]
+    global params
 
     input_data = None
     with h5py.File(input_data_filename, "r") as input_data_file:
         input_data = input_data_file["images"][...]
 
-    output_data = seg.generate_dictionary(input_data, **params)
+    output_data = seg.generate_dictionary(
+        input_data, **params["generate_neurons"]["generate_dictionary"]
+    )
 
     with h5py.File(output_data_filename, "w") as output_data_file:
         output_data_file.create_dataset(
@@ -75,14 +77,15 @@ def generate_dictionary(input_data_filename, output_data_filename):
     ".post.h5"
 )
 def postprocess_data(input_data_filename, output_data_filename):
-    params = read_parameters(config_filename)
-    params = params["generate_neurons"]["postprocess_data"]
+    global params
 
     input_data = None
     with h5py.File(input_data_filename, "r") as input_data_file:
         input_data = input_data_file["images"][...]
 
-    output_data = seg.postprocess_data(input_data, **params)
+    output_data = seg.postprocess_data(
+        input_data, **params["generate_neurons"]["postprocess_data"]
+    )
 
     with h5py.File(output_data_filename, "w") as output_data_file:
         output_data_file.create_dataset(
