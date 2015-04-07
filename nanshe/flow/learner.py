@@ -97,14 +97,21 @@ def postprocess_data(input_data_filename, output_data_filename):
         output_data_file["images"][...] = output_data
 
 
-if __name__ == "__main__":
+def main(*argv):
+    global params
+
     parser = ruffus.cmdline.get_argparse(ignored_args=["config"])
     parser.add_argument(
         "-c", "--config", help="JSON config file", required=True
     )
 
-    options = parser.parse_args()
+    options = parser.parse_args(argv[1:])
     config_filename = options.config
     params = read_parameters(config_filename)
 
-    ruffus.cmdline.run(options)
+    return(int(ruffus.cmdline.run(options) != False))
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(*sys.argv))
