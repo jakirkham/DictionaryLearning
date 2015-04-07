@@ -109,7 +109,9 @@ def main(*argv):
     config_filename = options.config
     params = read_parameters(config_filename)
 
-    return(int(ruffus.cmdline.run(options) != False))
+    ruffus.cmdline.run(options)
+
+    return(0)
 
 
 if __name__ == "__main__":
