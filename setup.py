@@ -61,7 +61,8 @@ elif sys.argv[1] == "bdist_conda":
         "rank_filter",
         "functools32",
         "pyqt",
-        "volumina"
+        "volumina",
+        "ruffus"
     ]
 
     install_requires = [
@@ -84,7 +85,8 @@ elif sys.argv[1] == "bdist_conda":
         "rank_filter",
         "functools32",
         "pyqt",
-        "volumina"
+        "volumina",
+        "ruffus"
     ]
 elif sys.argv[1] == "build_sphinx":
     import sphinx.apidoc
