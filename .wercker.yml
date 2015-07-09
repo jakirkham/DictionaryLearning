@@ -2,6 +2,11 @@ box: jakirkham/centos_drmaa_conda
 build:
     steps:
         - script:
+            name: Echo private var.
+            code: |-
+                echo '$TEST = ' $TEST
+
+        - script:
             name: Build Conda Package.
             code: |-
                 conda config --add channels http://conda.anaconda.org/jakirkham
