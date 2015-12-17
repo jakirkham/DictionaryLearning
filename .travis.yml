@@ -10,7 +10,6 @@ before_install:
    - cd ../..
    - pwd
    # Fix the hostname to have fewer characters for SGE.
-   - echo $MAXHOSTNAMELEN
    - sudo hostname "$(hostname | cut -c1-63)"
 install:
    # Download and configure conda.
