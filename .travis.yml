@@ -13,7 +13,6 @@ before_install:
    - sudo hostname "$(hostname | cut -c1-63)"
    - hostname
    - cat /etc/hosts
-   - sudo echo "127.0.0.1 $(hostname)" >> /etc/hosts
 install:
    # Download and configure conda.
    - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
