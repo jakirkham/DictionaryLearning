@@ -4568,7 +4568,7 @@ def pair_dot_product_partially_normalized(new_vector_set, ord=2):
     # Measure the dot product between any two neurons
     # (i.e. related to the angle of separation)
     vector_pairs_dot_product = scipy.linalg.blas.dsyrk(1, new_vector_set)
-    vector_pairs_dot_product += numpy.tril(vector_pairs_dot_product.T, -1)
+    vector_pairs_dot_product += numpy.triu(vector_pairs_dot_product, 1).T
 
     vector_pairs_dot_product_normalized = vector_pairs_dot_product / new_vector_set_norms_expanded
 
@@ -4764,7 +4764,7 @@ def pair_dot_product_normalized(new_vector_set, ord=2):
     # Measure the dot product between any two neurons
     # (i.e. related to the angle of separation)
     vector_pairs_dot_product = scipy.linalg.blas.dsyrk(1, new_vector_set)
-    vector_pairs_dot_product += numpy.tril(vector_pairs_dot_product.T, -1)
+    vector_pairs_dot_product += numpy.triu(vector_pairs_dot_product, 1).T
 
     # Measure the dot product between any two neurons
     # (i.e. related to the angle of separation)
