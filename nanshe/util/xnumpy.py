@@ -30,6 +30,8 @@ import warnings
 import numpy
 import scipy
 
+import scipy.linalg
+import scipy.linalg.blas
 import scipy.misc
 import scipy.ndimage
 import scipy.ndimage.morphology
