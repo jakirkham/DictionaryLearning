@@ -42,6 +42,7 @@ install:
    - conda update --use-local -n testenv --all
    - conda install --use-local -n testenv nanshe==$(python setup.py --version)
    - source activate testenv
+   - conda install -y spams || true
    - conda remove -y scikit-learn
    - conda install -y cython
    - pip install git+https://github.com/jakirkham/scikit-learn.git@dict_pos_constrt#egg=scikit-learn
