@@ -93,7 +93,9 @@ class TestXTiff(object):
     def test_get_standard_tiff_array(self):
         for each_filename, each_filedata in self.filedata.items():
             each_data = nanshe.io.xtiff.get_standard_tiff_array(
-                each_filename, pages_to_channel=self.pages_to_channel
+                each_filename,
+                pages_to_channel=self.pages_to_channel,
+                memmap=True
             )
 
             assert (each_data.shape == each_filedata.shape)
@@ -104,7 +106,9 @@ class TestXTiff(object):
     def test_get_standard_tiff_data(self):
         for each_filename, each_filedata in self.filedata.items():
             each_data, each_metadata = nanshe.io.xtiff.get_standard_tiff_data(
-                each_filename, pages_to_channel=self.pages_to_channel
+                each_filename,
+                pages_to_channel=self.pages_to_channel,
+                memmap=True
             )
 
             assert (each_data.shape == each_filedata.shape)
@@ -126,7 +130,8 @@ class TestXTiff(object):
         nanshe.io.xtiff.convert_tiffs(
             list(self.filedata.keys()),
             hdf5_filepath,
-            pages_to_channel=self.pages_to_channel
+            pages_to_channel=self.pages_to_channel,
+            memmap=True
         )
 
         assert os.path.exists(hdf5_filename)
