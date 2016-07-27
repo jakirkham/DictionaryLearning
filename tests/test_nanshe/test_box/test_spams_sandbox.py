@@ -11,7 +11,12 @@ import nose.plugins
 import nose.plugins.attrib
 
 import ctypes
-import multiprocessing
+
+try:
+    import billiard as multiprocessing
+    mp = multiprocessing.get_context("spawn")
+except ImportError:
+    import multiprocessing as mp
 
 try:
     from queue import Queue
@@ -520,7 +525,7 @@ class TestSpamsSandbox(object):
         g_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             g_array_type._dtype_.type
         ).type(0)[()]))
-        g_array = multiprocessing.Array(
+        g_array = mp.Array(
             g_array_ctype,
             int(numpy.product(g_array_type._shape_)),
             lock=False
@@ -541,7 +546,7 @@ class TestSpamsSandbox(object):
         result_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             result_array_type._dtype_.type
         ).type(0)[()]))
-        result_array = multiprocessing.Array(
+        result_array = mp.Array(
             result_array_ctype,
             int(numpy.product(result_array_type._shape_)),
             lock=False
@@ -616,7 +621,7 @@ class TestSpamsSandbox(object):
         g3_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             g3_array_type._dtype_.type
         ).type(0)[()]))
-        g3_array = multiprocessing.Array(
+        g3_array = mp.Array(
             g3_array_ctype,
             int(numpy.product(g3_array_type._shape_)),
             lock=False
@@ -637,7 +642,7 @@ class TestSpamsSandbox(object):
         result_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             result_array_type._dtype_.type
         ).type(0)[()]))
-        result_array = multiprocessing.Array(
+        result_array = mp.Array(
             result_array_ctype,
             int(numpy.product(result_array_type._shape_)),
             lock=False
@@ -812,7 +817,7 @@ class TestSpamsSandbox(object):
         g_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             g_array_type._dtype_.type
         ).type(0)[()]))
-        g_array = multiprocessing.Array(
+        g_array = mp.Array(
             g_array_ctype,
             int(numpy.product(g_array_type._shape_)),
             lock=False
@@ -833,7 +838,7 @@ class TestSpamsSandbox(object):
         result_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             result_array_type._dtype_.type
         ).type(0)[()]))
-        result_array = multiprocessing.Array(
+        result_array = mp.Array(
             result_array_ctype,
             int(numpy.product(result_array_type._shape_)),
             lock=False
@@ -912,7 +917,7 @@ class TestSpamsSandbox(object):
         g3_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             g3_array_type._dtype_.type
         ).type(0)[()]))
-        g3_array = multiprocessing.Array(
+        g3_array = mp.Array(
             g3_array_ctype,
             int(numpy.product(g3_array_type._shape_)),
             lock=False
@@ -933,7 +938,7 @@ class TestSpamsSandbox(object):
         result_array_ctype = type(numpy.ctypeslib.as_ctypes(numpy.dtype(
             result_array_type._dtype_.type
         ).type(0)[()]))
-        result_array = multiprocessing.Array(
+        result_array = mp.Array(
             result_array_ctype,
             int(numpy.product(result_array_type._shape_)),
             lock=False
