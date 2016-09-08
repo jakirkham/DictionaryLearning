@@ -27,6 +27,13 @@ class NoseTestCommand(TestCommand):
         self.test_suite = True
 
     def run_tests(self):
+        # Clear existing coverage data.
+        try:
+            import coverage
+            coverage.Coverage().erase()
+        except ImportError:
+            pass
+
         import nose
         nose.run_exit(argv=["nosetests"])
 
